@@ -8,7 +8,7 @@ namespace DCI.GIS.MapServer.Handlers
         public HandlerManager(MapServerConfig config)
         {
             _config = config;
-
+            
             _defaultHandler = new EsriBuddleFileHandler(config.DefalutFileBasePath);
 
             Init();

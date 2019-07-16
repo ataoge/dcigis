@@ -1,22 +1,22 @@
 using System;
 using System.Threading.Tasks;
+using Ataoge.GisCore.Wmts;
 using DCI.GIS.MapServer.Configuration;
 using Microsoft.AspNetCore.Http;
 
 namespace DCI.GIS.MapServer.Handlers
 {
-    public class TpkHandler : IServiceHandler
+    public class PostgisHandler : IServiceHandler
     {
-        public TpkHandler(string filePath)
+        public PostgisHandler()
         {
-            _filePath = filePath;
+            
         }
-
-        private readonly string _filePath;
 
         public void Init(ServiceConfig config)
         {
-            
+           // Ataoge.GisCore.Utilities.CommonGisTools.GetTileExtent
+           
         }
 
         public Task HandleCapabilities(HttpContext context)

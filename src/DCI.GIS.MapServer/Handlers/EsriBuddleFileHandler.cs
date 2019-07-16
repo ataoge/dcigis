@@ -112,10 +112,12 @@ namespace DCI.GIS.MapServer.Handlers
             if (bytes != null)
             {
                 var response = context.Response;
-                response.ContentType = GetContentType(format);
+                
                 response.StatusCode = StatusCodes.Status200OK;
                 response.ContentLength = bytes.Length;
+
                 response.Headers.Add("Content-Encoding", "gzip");
+                response.ContentType = GetContentType("gzip");
 
                 var outputStream = response.Body;
                 using (var inputStream = new MemoryStream(bytes))
