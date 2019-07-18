@@ -13,9 +13,13 @@ namespace DCI.GIS.MapServer.Configuration
             get { return this.innerDicts;}
         }
 
-        public string this[string key]
+        public override string this[string key]
         {
-            get { return innerDicts[key]; }
+            get { 
+                    if (innerDicts.ContainsKey(key))
+                        return innerDicts[key]; 
+                    return null;
+                }
             set { innerDicts[key] = value; }
         }
     }

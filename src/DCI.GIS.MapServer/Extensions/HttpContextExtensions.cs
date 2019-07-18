@@ -12,5 +12,14 @@ namespace Microsoft.AspNetCore.Http
             }
             return defaultValue;
         }
+
+        public static string GetStringParam(this HttpContext context, string name, string defaultValue = null)
+        {
+            if (context.Request.Query.ContainsKey(name))
+            {
+                return context.Request.Query[name];
+            }
+            return defaultValue;
+        }
     }
 }

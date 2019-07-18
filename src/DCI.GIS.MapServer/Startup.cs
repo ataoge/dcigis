@@ -36,8 +36,9 @@ namespace DCI.GIS.MapServer
             services.AddTransient<MapServerMiddleware>();
             services.AddRouting();
 
-            var config = Configuration.GetSection("MapServer").Get<MapServerConfig>();
-            services.AddSingleton<IHandlerManager>(new HandlerManager(config));
+            var config = Configuration.GetSection("MapServer");//.Get<MapServerConfig>();
+            services.Configure<MapServerConfig>(config);
+            services.AddSingleton<IHandlerManager, HandlerManager>();
 
             // 跨域访问
             services.AddCors(options =>

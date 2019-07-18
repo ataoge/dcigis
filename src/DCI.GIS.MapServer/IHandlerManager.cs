@@ -1,6 +1,6 @@
 namespace DCI.GIS.MapServer
 {
-    public interface IHandlerManager
+    public interface IHandlerManager: ICacheManager
     {
         IServiceHandler GetHandler(string name);
     }

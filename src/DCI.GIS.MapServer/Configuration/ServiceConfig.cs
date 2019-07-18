@@ -8,6 +8,10 @@ namespace DCI.GIS.MapServer.Configuration
 
         public string Url {get; set;}
 
-        
+        public virtual string this[string key]
+        {
+            get { return null;}
+            set {}
+        }   
     }
 }
