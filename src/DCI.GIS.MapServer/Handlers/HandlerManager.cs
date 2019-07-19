@@ -5,6 +5,7 @@ using DCI.GIS.MapServer.Configuration;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
 
 namespace DCI.GIS.MapServer.Handlers
 {
@@ -46,7 +47,8 @@ namespace DCI.GIS.MapServer.Handlers
             switch(type)
             {
                 case "Proxy":
-                    return new WmtsProxyHandler();
+                    var clientFactory = _serviceProvider.GetRequiredService<IHttpClientFactory>();
+                    return new WmtsProxyHandler(clientFactory);
                 case "PostGIS":
                     var database = _serviceProvider.GetService<Database>();
                     return new PostgisHandler(database, this);
